@@ -3,3 +3,9 @@
 
 # Except those related to Git (and GitHub)
 !.git*
+
+# Exclude bind mounts
+icinga2/
+icingadb-mysql/
+icingaweb/
+icingaweb-mysql/

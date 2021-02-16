@@ -65,7 +65,7 @@ services:
       MYSQL_DATABASE: icingadb
       MYSQL_USER: icingadb
       MYSQL_PASSWORD: ${ICINGADB_MYSQL_PASSWORD:-icingadb}
-    image: mysql
+    image: mariadb
     logging: *default-logging
     volumes:
       - ./icingadb-mysql:/var/lib/mysql
@@ -128,7 +128,7 @@ services:
       MYSQL_DATABASE: icingaweb
       MYSQL_USER: icingaweb
       MYSQL_PASSWORD: ${ICINGAWEB_MYSQL_PASSWORD:-icingaweb}
-    image: mysql
+    image: mariadb
     logging: *default-logging
     volumes:
       - ./icingaweb-mysql:/var/lib/mysql

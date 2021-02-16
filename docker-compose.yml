@@ -21,7 +21,7 @@ services:
     image: icinga/icinga2
     logging: *default-logging
     volumes:
-      - icinga2:/data
+      - ./icinga2:/data
       - ./icingadb.conf:/config/icingadb.conf
       - ./icingaweb-api-user.conf:/config/icingaweb-api-user.conf
       - ./init-icinga2.sh:/config/init-icinga2.sh
@@ -37,7 +37,7 @@ services:
     ports:
       - 5665:5665
     volumes:
-      - icinga2:/data
+      - ./icinga2:/data
 
   icingadb:
     environment:
@@ -67,7 +67,7 @@ services:
     image: mysql
     logging: *default-logging
     volumes:
-      - icingadb-mysql:/var/lib/mysql
+      - ./icingadb-mysql:/var/lib/mysql
 
   icingadb-redis:
     image: redis
@@ -118,7 +118,7 @@ services:
     # Please note that this needs a more sophisticated solution.
     restart: unless-stopped
     volumes:
-      - icingaweb:/data
+      - ./icingaweb:/data
 
   icingaweb-mysql:
     command: --default-authentication-plugin=mysql_native_password
@@ -130,10 +130,4 @@ services:
     image: mysql
     logging: *default-logging
     volumes:
-      - icingaweb-mysql:/var/lib/mysql
-
-volumes:
-  icinga2:
-  icingadb-mysql:
-  icingaweb:
-  icingaweb-mysql:
+      - ./icingaweb-mysql:/var/lib/mysql

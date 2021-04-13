@@ -27,9 +27,9 @@ logs:
 
 .PHONY:
 fix-permissions:
-	# FIXME figure out what user these should belong to
-	# -which podman && podman unshare chown -R 472:472 grafana/data
-	# -which podman && podman unshare chown -R 1000:1000 elasticsearch
+    -which podman && podman unshare chown -R 5665:5665 icinga2
+    # I don't remember actively touching this config - check if this is really neccessary
+    # -which podman && podman unshare chown -R 33:33 icingaweb
 
 .PHONY:
 update: fix-permissions

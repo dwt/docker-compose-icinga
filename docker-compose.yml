@@ -40,6 +40,7 @@ services:
       - 5665:5665
     volumes:
       - ./icinga2:/data
+      - ./msmtp.conf:/etc/msmtprc:ro
 
   icingadb:
     # See https://github.com/Icinga/docker-icingadb

@@ -43,3 +43,20 @@ update-all-containers: fix-permissions
 .PHONY:
 clean:
 	$(DOCKER) system prune --all --force
+
+.PHONY:
+icinga-config-check: 
+	$(DOCKER_COMPOSE) exec icinga2 icinga2 daemon --validate
+
+.PHONY:
+icinga-config-reload: 
+	$(DOCKER_COMPOSE) exec icinga2 pkill -HUP icinga2
+
+.PHONY:
+icinga-shell: 
+	$(DOCKER_COMPOSE) exec --user root icinga2 bash
+
+.PHONY:
+icinga-config-print: 
+	$(DOCKER_COMPOSE) exec icinga2 icinga2 object list
+

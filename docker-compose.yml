@@ -14,12 +14,14 @@ networks:
 services:
   # The Icinga 2 docker image does not support configuration via env vars at the moment.
   # So, we have to ship some configs with this little init container. Referenced in depends_on of the icinga2 service.
+  # REFACT change deployment so the init container is not needed anymore
   init-icinga2:
     # see https://github.com/Icinga/docker-icinga2
     image: icinga/icinga2
     command: [ "/config/init-icinga2.sh" ]
     environment:
       ICINGA_MASTER: 1
+      HOST_NAME: icinga2
     logging: *default-logging
     volumes:
       - ./icinga2:/data
@@ -35,6 +37,7 @@ services:
       - init-icinga2
     environment:
       ICINGA_MASTER: 1
+      HOST_NAME: icinga2
     logging: *default-logging
     ports:
       - 5665:5665

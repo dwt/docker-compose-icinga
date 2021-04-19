@@ -2,6 +2,9 @@
 DOCKER = docker
 DOCKER_COMPOSE = docker-compose
 
+# Provide same environment variable that docker-compose ues
+include .env
+
 .DEFAULT:
 just-run-the-damn-thing: update start
 	
@@ -59,4 +62,8 @@ icinga-shell:
 .PHONY:
 icinga-config-print: 
 	$(DOCKER_COMPOSE) exec icinga2 icinga2 object list
+
+.PHONY:
+icinga-service-json:
+	$(DOCKER_COMPOSE) exec icinga2 curl --insecure --silent --user root:$(ICINGA_API_ROOT_PASWORD) https://localhost:5665/v1/objects/services |jq
 

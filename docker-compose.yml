@@ -40,7 +40,7 @@ services:
       HOST_NAME: icinga2
     logging: *default-logging
     ports:
-      - 5665:5665
+      - 5665:5665 # REFACT consider to un-expose this, as it is not needed for the deployment AFAIK
     volumes:
       - ./icinga2:/data
       - ./msmtp.conf:/etc/msmtprc:ro

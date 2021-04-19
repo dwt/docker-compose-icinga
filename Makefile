@@ -30,9 +30,9 @@ logs:
 
 .PHONY:
 fix-permissions:
-    -which podman && podman unshare chown -R 5665:5665 icinga2
-    # I don't remember actively touching this config - check if this is really neccessary
-    # -which podman && podman unshare chown -R 33:33 icingaweb
+	-which podman && podman unshare chown -R 5665:5665 icinga2
+	# I don't remember actively touching this config - check if this is really neccessary
+	# -which podman && podman unshare chown -R 33:33 icingaweb
 
 .PHONY:
 update: fix-permissions

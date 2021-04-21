@@ -17,7 +17,7 @@ services:
   # REFACT change deployment so the init container is not needed anymore
   init-icinga2:
     # see https://github.com/Icinga/docker-icinga2
-    image: icinga/icinga2
+    image: icinga/icinga2:master
     command: [ "/config/init-icinga2.sh" ]
     environment:
       ICINGA_MASTER: 1
@@ -31,8 +31,8 @@ services:
 
   icinga2:
     # see https://github.com/Icinga/docker-icinga2
-    image: icinga/icinga2
     # see https://hub.docker.com/r/icinga/icinga2
+    image: icinga/icinga2:master
     depends_on:
       - icingadb-redis
       - init-icinga2

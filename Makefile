@@ -58,7 +58,7 @@ icinga-config-reload:
 
 .PHONY:
 icinga-shell: 
-	$(DOCKER_COMPOSE) exec --user root icinga2 bash
+	$(DOCKER_COMPOSE) run --rm --user root icinga2 bash
 
 .PHONY:
 icinga-config-print: 

@@ -50,7 +50,7 @@ clean:
 
 .PHONY:
 icinga-config-check: 
-	$(DOCKER_COMPOSE) run icinga2 --rm icinga2 daemon --validate
+	$(DOCKER_COMPOSE) run --rm icinga2 icinga2 daemon --validate
 
 .PHONY:
 icinga-config-reload: 

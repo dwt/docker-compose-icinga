@@ -36,6 +36,8 @@ services:
     depends_on:
       - icingadb-redis
       - init-icinga2
+    domainname: ops.zms.hosting
+    hostname: ops
     environment:
       ICINGA_MASTER: 1
       HOST_NAME: icinga2

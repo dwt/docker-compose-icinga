@@ -19,9 +19,12 @@ services:
     # see https://github.com/Icinga/docker-icinga2
     image: icinga/icinga2:master
     command: [ "/config/init-icinga2.sh" ]
+    hostname: ${ICINGA_HOST}
+    domainname: ${ICINGA_DOMAIN}
     environment:
       ICINGA_MASTER: 1
       HOST_NAME: icinga2
+      ICINGA_CN: ${ICINGA_DOMAIN}
     logging: *default-logging
     volumes:
       - ./icinga2:/data
@@ -36,10 +39,11 @@ services:
     depends_on:
       - icingadb-redis
       - init-icinga2
+    hostname: ${ICINGA_HOST}
+    domainname: ${ICINGA_DOMAIN}
     environment:
       ICINGA_MASTER: 1
       HOST_NAME: icinga2
-      # REFACT consider to add these
       ICINGA_CN: ${ICINGA_DOMAIN}
       # ICINGA_ZONE=master
     logging: *default-logging
@@ -68,10 +72,6 @@ services:
     # Restart Icinga DB container automatically since we have to wait for the database to be ready.
     # Please note that this needs a more sophisticated solution.
     restart: unless-stopped
-
-  icingadb-redis:
-    image: redis
-    logging: *default-logging
 
   icingaweb:
     # see https://github.com/Icinga/docker-icingaweb2
@@ -121,6 +121,10 @@ services:
     volumes:
       - ./icingaweb:/data
 
+  icingadb-redis:
+    image: redis
+    logging: *default-logging
+  
   mysql:
     # see https://hub.docker.com/_/mariadb
     image: mariadb

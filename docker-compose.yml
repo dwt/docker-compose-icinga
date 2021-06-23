@@ -61,13 +61,13 @@ services:
       - mysql
       - redis
     environment:
-      ICINGADB_MYSQL_HOST: mysql
-      ICINGADB_MYSQL_DATABASE: icingadb
-      ICINGADB_MYSQL_USER: icingadb
-      ICINGADB_MYSQL_PASSWORD: ${ICINGADB_MYSQL_PASSWORD}
-      ICINGADB_REDIS_HOST: icingadb-redis
-      # Icinga DB connects to Redis on port 6380 by default but we're using the Redis default port 6379 here.
-      ICINGADB_REDIS_PORT: 6379
+      ICINGADB_DATABASE_HOST: mysql
+      ICINGADB_DATABASE_PORT: 3306
+      ICINGADB_DATABASE_DATABASE: icingadb
+      ICINGADB_DATABASE_USER: icingadb
+      ICINGADB_DATABASE_PASSWORD: ${ICINGADB_MYSQL_PASSWORD}
+      ICINGADB_REDIS_ADDRESS: redis:6379
+      ICINGADB_REDIS_PASSWORD: ""
     logging: *default-logging
     # Restart Icinga DB container automatically since we have to wait for the database to be ready.
     # Please note that this needs a more sophisticated solution.

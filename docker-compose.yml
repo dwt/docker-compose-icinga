@@ -37,7 +37,7 @@ services:
     # see https://hub.docker.com/r/icinga/icinga2
     image: icinga/icinga2:master
     depends_on:
-      - icingadb-redis
+      - redis
       - init-icinga2
     hostname: ${ICINGA_HOST}
     domainname: ${ICINGA_DOMAIN}
@@ -59,7 +59,7 @@ services:
     image: icinga/icingadb:master
     depends_on:
       - mysql
-      - icingadb-redis
+      - redis
     environment:
       ICINGADB_MYSQL_HOST: mysql
       ICINGADB_MYSQL_DATABASE: icingadb
@@ -78,6 +78,7 @@ services:
     image: icinga/icingaweb2:master
     depends_on:
       - mysql
+      - redis
     environment:
       icingaweb.authentication.icingaweb2.backend: db
       icingaweb.authentication.icingaweb2.resource: icingaweb-mysql
@@ -88,7 +89,7 @@ services:
       icingaweb.groups.icingaweb2.backend: db
       icingaweb.groups.icingaweb2.resource: icingaweb-mysql
       icingaweb.modules.icingadb.config.icingadb.resource: icingadb
-      icingaweb.modules.icingadb.config.redis1.host: icingadb-redis
+      icingaweb.modules.icingadb.config.redis1.host: redis
       icingaweb.modules.icingadb.config.redis1.port: 6379
       icingaweb.modules.monitoring.commandtransports.icinga2.host: icinga2
       icingaweb.modules.monitoring.commandtransports.icinga2.password: ${ICINGAWEB_ICINGA2_API_USER_PASSWORD}
@@ -121,7 +122,7 @@ services:
     volumes:
       - ./icingaweb:/data
 
-  icingadb-redis:
+  redis:
     image: redis
     logging: *default-logging
   

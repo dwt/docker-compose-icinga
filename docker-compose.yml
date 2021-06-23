@@ -75,9 +75,9 @@ services:
 
   icingaweb:
     # see https://github.com/Icinga/docker-icingaweb2
-    image: icinga/icingaweb2:master
     # TODO switch to :master asap. But right now that fails, as some dependencies are not in place
     # Master would allow to test display of check commands, but can't have that yet
+    image: icinga/icingaweb2:latest
     depends_on:
       - mysql
       - redis

@@ -77,6 +77,7 @@ services:
     # see https://github.com/Icinga/docker-icingaweb2
     # TODO switch to :master asap. But right now that fails, as some dependencies are not in place
     # Master would allow to test display of check commands, but can't have that yet
+    # if :master is broken :latest should still work (but doesn't contain the enhanced object introspection)
     image: icinga/icingaweb2:latest
     depends_on:
       - mysql

@@ -26,6 +26,7 @@ stop:
 
 .PHONY:
 logs:
+	# Doesn't work with podman-compose yet
 	$(DOCKER_COMPOSE) logs --follow
 
 .PHONY:
@@ -47,6 +48,10 @@ update-all-containers: fix-permissions
 .PHONY:
 clean:
 	$(DOCKER) system prune --all --force
+
+.PHONY:
+icinga-recreate-cert:
+	$(DOCKER_COMPOSE) run --rm icinga2 icinga2 node wizard
 
 .PHONY:
 icinga-config-check: 

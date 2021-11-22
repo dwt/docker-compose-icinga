@@ -111,6 +111,13 @@ services:
       icingaweb.modules.monitoring.commandtransports.icinga2.username: icingaweb
       icingaweb.modules.monitoring.commandtransports.icinga2.password: ${ICINGAWEB_ICINGA2_API_USER_PASSWORD}
       
+      # new config? https://github.com/Icinga/docker-icingaweb2/issues/65
+      icingaweb.modules.icingadb.commandtransports.icinga2.transport: api
+      icingaweb.modules.icingadb.commandtransports.icinga2.host: icinga2
+      icingaweb.modules.icingadb.commandtransports.icinga2.port: 5665
+      icingaweb.modules.icingadb.commandtransports.icinga2.username: icingaweb
+      icingaweb.modules.icingadb.commandtransports.icinga2.password: ${ICINGAWEB_ICINGA2_API_USER_PASSWORD}
+      
       icingaweb.resources.icingaweb_db.type: db
       icingaweb.resources.icingaweb_db.db: mysql
       icingaweb.resources.icingaweb_db.host: mysql

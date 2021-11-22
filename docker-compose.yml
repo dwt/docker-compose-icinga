@@ -102,6 +102,10 @@ services:
       icingaweb.modules.icingadb.config.redis1.host: redis
       icingaweb.modules.icingadb.config.redis1.port: 6379
       
+      # new config? https://github.com/Icinga/docker-icingaweb2/issues/65
+      icingaweb.modules.icingadb.redis.redis1.host: redis
+      icingaweb.modules.icingadb.redis.redis1.port: 6379
+      
       icingaweb.modules.monitoring.commandtransports.icinga2.transport: api
       icingaweb.modules.monitoring.commandtransports.icinga2.host: icinga2
       icingaweb.modules.monitoring.commandtransports.icinga2.username: icingaweb

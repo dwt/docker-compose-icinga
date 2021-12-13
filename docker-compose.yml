@@ -149,6 +149,8 @@ services:
   redis:
     image: redis
     logging: *default-logging
+    volumes:
+      - ./redis:/data
   
   # REFACT rename mariadb? But this is replicated quite some places that need to update too
   mysql:

@@ -41,7 +41,7 @@ update: fix-permissions
 	$(DOCKER_COMPOSE) build --pull
 
 .PHONY:
-update-all-containers: fix-permissions
+pull: fix-permissions
 	# update container images
 	$(DOCKER_COMPOSE) pull
 

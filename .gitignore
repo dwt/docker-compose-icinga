@@ -10,3 +10,4 @@ icingadb-mysql/
 icingaweb/
 icingaweb-mysql/
 mysql/
+redis

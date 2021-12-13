@@ -17,11 +17,11 @@ podman:
 	$(eval export GODEBUG:=netdns=go)
 
 .PHONY:
-start: fix-permissions
+up: fix-permissions
 	$(DOCKER_COMPOSE) up -d
 
 .PHONY:
-stop:
+down:
 	$(DOCKER_COMPOSE) down
 
 .PHONY:
@@ -37,7 +37,7 @@ fix-permissions:
 	# -which podman && podman unshare chown -R 33:33 icingaweb
 
 .PHONY:
-update: fix-permissions
+build: fix-permissions
 	$(DOCKER_COMPOSE) build --pull
 
 .PHONY:

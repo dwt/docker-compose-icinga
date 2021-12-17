@@ -69,6 +69,10 @@ icinga-shell:
 icinga-config-print: 
 	$(DOCKER_COMPOSE) exec icinga2 icinga2 object list
 
+.PHONY
+icinga-config-debug:
+	$(DOCKER_COMPOSE) exec icinga2 icinga2  daemon --validate --script-debugger 
+
 .PHONY:
 icinga-service-json:
 	$(DOCKER_COMPOSE) exec icinga2 curl --insecure --silent --user root:$(ICINGA_API_ROOT_PASWORD) https://localhost:5665/v1/objects/services |jq

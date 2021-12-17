@@ -69,7 +69,7 @@ icinga-shell:
 icinga-config-print: 
 	$(DOCKER_COMPOSE) exec icinga2 icinga2 object list
 
-.PHONY
+.PHONY:
 icinga-config-debug:
 	$(DOCKER_COMPOSE) exec icinga2 icinga2  daemon --validate --script-debugger 
 

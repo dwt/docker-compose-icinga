@@ -77,3 +77,8 @@ icinga-config-debug:
 icinga-service-json:
 	$(DOCKER_COMPOSE) exec icinga2 curl --insecure --silent --user root:$(ICINGA_API_ROOT_PASWORD) https://localhost:5665/v1/objects/services |jq
 
+# FIXME doesn't work, always returns not authenticated errors
+
+.PHONY:
+icinga-console:
+	$(DOCKER_COMPOSE) exec icinga2 icinga2 console --connect https://root:$(ICINGA_API_ROOT_PASWORD)@localhost:5665/
